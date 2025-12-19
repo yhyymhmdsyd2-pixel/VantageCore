@@ -1,5 +1,35 @@
-// jjj
-// 1️⃣ Variables
+let bottom = document.querySelectorAll(".fade-in");
+let scaleX = document.querySelectorAll(".fade-in-scaleX");
+let fadetop = document.querySelectorAll(".fade-in-top");
+let right = document.querySelectorAll(".fade-in-right");
+let left = document.querySelectorAll(".fade-in-left");
+let observer = new IntersectionObserver(
+  (inters) => {
+    inters.forEach((inter) => {
+      if (inter.isIntersecting) {
+        inter.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
+[...right, ...left, ...fadetop, ...bottom, ...scaleX].forEach((el) => {
+  observer.observe(el);
+});
+
+let section = document.querySelector(".prent-contener");
+let sectionadd = document.querySelector(".prent-header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY >= section.offsetTop) {
+    sectionadd.classList.add("color");
+  }
+  if (window.screenY >= sectionadd.offsetTop) {
+    sectionadd.classList.remove("color");
+  }
+});
+
 let links = document.querySelectorAll("ul li a");
 
 links.forEach((link) => {
@@ -11,30 +41,14 @@ links.forEach((link) => {
   };
 });
 
-// ;;;
-// 1️⃣ Variables
-let feat = document.querySelectorAll(".fade-in");
-// 2️⃣ Events +Functions
-
-window.addEventListener("load", function () {
-  // 3️⃣ Functions + forEach
-  feat.forEach(function (e, i) {
-    setTimeout(() => {
-      e.classList.add("show");
-    }, 200 * i);
-  });
-});
-
-// lll
-// 1️⃣ Variables
 let burger = document.querySelector(".prent-header .i-none");
 let ulnone = document.querySelector("ul");
-// 2️⃣ Functions + 3️⃣ Events
+
 burger.onclick = function () {
   ulnone.classList.toggle("active");
 };
 
-// lll
+// lll;
 // 1️⃣ Variables
 let years = document.querySelector(".years");
 // 2️⃣ Date
