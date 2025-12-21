@@ -290,10 +290,6 @@ li a:hover:after {
   margin-bottom: 10px;
 }
 
-.contener-list h2 span {
-  display: block;
-}
-
 .contener-list p {
   letter-spacing: 1.7px;
   font-weight: 100;
