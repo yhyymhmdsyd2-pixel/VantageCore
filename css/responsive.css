@@ -61,7 +61,7 @@
   }
 }
 
-/* logo */
+/* header logo */
 
 @media (max-width: 950px) {
   .header-i i {
@@ -72,11 +72,12 @@
     font-weight: 400;
   }
   li a {
-    font-size: smaller;
+    font-size: 12px;
     font-weight: 400;
   }
   .header-purches {
     padding: 0 15px;
+    margin-right: 20px;
   }
   .header-purches p {
     font-size: 10px;
@@ -86,6 +87,17 @@
 
   .header-purches i {
     font-size: 15px;
+  }
+}
+
+/* .other-services */
+
+@media (max-width: 768px) {
+  .Other-Services {
+    gap: 20px;
+    transform: translatey(0px);
+    right: 0px;
+    flex-wrap: wrap;
   }
 }
 
@@ -118,11 +130,13 @@
   }
   .contener-list h2 {
     font-weight: 400;
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .contener-list p {
     font-weight: 300;
+    font-size: large;
+    margin-right: 16px;
   }
 
   .contener-list a {
@@ -133,7 +147,17 @@
   }
 }
 
-/* Features p-centrer + siz */
+/* TrustedBy */
+
+@media (max-width: 768px) {
+  .TrustedBy-contener {
+    justify-content: center;
+    margin-left: 12px;
+    margin-right: 25px;
+  }
+}
+
+/* Features */
 
 @media (max-width: 768px) {
   .Features {
@@ -144,6 +168,22 @@
     font-size: 15px;
     text-align: center;
     width: fit-content;
+  }
+}
+
+/* work steap */
+
+@media (max-width: 768px) {
+  .steap span {
+    font-size: 35px;
+  }
+
+  .steap h2 {
+    font-size: 25px;
+  }
+
+  .steap p {
+    font-size: 15px;
   }
 }
 
@@ -167,17 +207,15 @@
 }
 
 @media (max-width: 768px) {
-  .Testimonials .Testimonials-contener .Testimonials-box-flex {
+  .Testimonials-box-flex {
     margin: auto 10px auto 0;
-    width: 350px;
+    flex: 0 0 350px;
+    padding: 20px 0;
   }
-  .Testimonials
-    .Testimonials-contener
-    .Testimonials-box-flex
-    .Testimonials-box-flex-p {
+  .Testimonials-box-flex-p {
     font-size: 12px;
   }
-  .Testimonials .Testimonials-contener .Testimonials-box-flex span {
+  .Testimonials-box-flex span {
     font-size: 10px;
   }
 }
@@ -201,5 +239,60 @@
   }
   .free-h2 {
     width: 400px;
+  }
+}
+
+/* sidel +sider */
+
+@media (max-width: 768px) {
+  .sider {
+    position: absolute;
+    left: 40px;
+  }
+  .sidel {
+    position: absolute;
+    z-index: 2025;
+    right: 40px;
+  }
+}
+
+/* fade-in-right */
+
+@media (max-width: 768px) {
+  .fade-in-right {
+    transform: translateX(20px);
+  }
+}
+
+/* head-list */
+
+@media (max-width: 768px) {
+  .head-list {
+    font-size: 20px;
+    letter-spacing: 1.7px;
+  }
+}
+
+/* Questions */
+
+@media (max-width: 768px) {
+  .faq-question {
+    width: 360px;
+  }
+
+  .faq-question-img img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .faq-question-img h2 {
+    font-size: 13px;
+  }
+  .faq-icon {
+    font-size: 15px;
+  }
+  .top-answer {
+    max-height: 80px;
+    font-size: 12px;
   }
 }

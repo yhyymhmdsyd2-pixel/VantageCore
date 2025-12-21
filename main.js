@@ -41,6 +41,13 @@ links.forEach((link) => {
   };
 });
 
+let other = document.querySelector(".Other-Services");
+let otherp = document.querySelector(".Other");
+
+otherp.onclick = function () {
+  other.classList.toggle("opacty");
+};
+
 let burger = document.querySelector(".prent-header .i-none");
 let ulnone = document.querySelector("ul");
 
@@ -159,4 +166,21 @@ document.querySelector(".left-Testimonials").addEventListener("click", () => {
   setTimeout(() => {
     isManual = false;
   }, 1500);
+});
+
+document.querySelectorAll(".faq-question-img").forEach((item) => {
+  item.addEventListener("click", () => {
+    const faqItem = item.closest(".faq-question");
+
+    const answer = faqItem.querySelector(".faq-answer");
+    answer.classList.toggle("top-answer");
+
+    item.classList.toggle("hoverall");
+
+    const img = item.querySelector("img");
+    img.classList.toggle("ainmation");
+
+    const icon = item.querySelector(".faq-icon");
+    icon.textContent = icon.textContent === "+" ? "-" : "+";
+  });
 });
