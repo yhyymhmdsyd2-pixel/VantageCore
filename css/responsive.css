@@ -118,15 +118,14 @@
 
 @media (max-width: 950px) {
   .contener-compewter {
-    width: 430px;
     position: absolute;
-    right: 0;
+    left: 0;
   }
 }
 /* list + compewter */
 @media (max-width: 700px) {
   .contener-list {
-    width: 330px;
+    width: 280px;
   }
   .contener-list h2 {
     font-weight: 400;
@@ -172,7 +171,14 @@
 }
 
 /* work steap */
-
+@media (max-width: 768px) {
+  .Works-contener {
+    margin: 0 25px;
+  }
+  .steap {
+    width: 80%;
+  }
+}
 @media (max-width: 768px) {
   .steap span {
     font-size: 35px;
@@ -274,7 +280,11 @@
 }
 
 /* Questions */
-
+@media (max-width: 768px) {
+  .Questions::before {
+    width: 350%;
+  }
+}
 @media (max-width: 768px) {
   .faq-question {
     width: 360px;

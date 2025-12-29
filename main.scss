@@ -1,0 +1,13 @@
+@use "./scss/base/reset";
+@use "./scss/base/typography";
+@use "./scss/base/variables";
+
+// // file layout
+// استدعاء ملف المتغيرات أولاً
+@use "./scss/layout/key" as *;
+
+// استدعاء باقي الأقسام (تأكد من إزالة // من أمام الهيدر)
+@use "./scss/layout/section-header" as *;
+@use "./scss/layout/section-main" as *;
+@use "./scss/layout/section-footer" as *;
+@use "./scss/layout/section-responsive" as *;

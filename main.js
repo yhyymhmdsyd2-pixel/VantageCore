@@ -61,10 +61,8 @@ let years = document.querySelector(".years");
 // 2️⃣ Date
 years.textContent = new Date().getFullYear();
 
-// ...animateSlider
-
-let slider = document.querySelector(".Features-contener");
-let track = document.querySelector(".Features-gruob-right");
+const slider = document.querySelector(".Features-contener");
+const track = document.querySelector(".Features-gruob-right");
 
 track.innerHTML += track.innerHTML;
 
@@ -72,100 +70,139 @@ document.querySelectorAll(".Features-box-flex").forEach((el) => {
   el.classList.add("show");
 });
 
-let speed = 0.5;
-let panusd = false;
+let speed = 0.6;
+let paused = false;
+let position = 0;
 
-let slides = document.querySelector(".Features-box-flex");
-slides = slides.offsetWidth + 20;
+const slide = document.querySelector(".Features-box-flex");
+const slideWidth = slide.offsetWidth + 20;
 
-slider.scrollLeft = 0;
+const isRTL = getComputedStyle(document.body).direction === "rtl";
+const direction = isRTL ? 1 : -1;
 
-function animateSlider() {
-  if (!panusd) slider.scrollLeft -= speed;
-
-  if (slider.scrollLeft <= 0) {
-    slider.scrollLeft = track.scrollWidth / 2;
+function animate() {
+  if (!paused) {
+    position += speed * direction;
+    track.style.transform = `translateX(${position}px)`;
   }
-  requestAnimationFrame(animateSlider);
-}
-animateSlider();
 
-slider.addEventListener("mouseenter", () => (speed = 0));
-slider.addEventListener("mouseleave", () => (speed = 1));
+  const resetPoint = -(track.scrollWidth / 2);
+
+  if (!isRTL && position <= resetPoint) {
+    position = 0;
+  }
+
+  if (isRTL && position >= -resetPoint) {
+    position = 0;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+/* hover pause */
+slider.addEventListener("mouseenter", () => (paused = true));
+slider.addEventListener("mouseleave", () => (paused = false));
+
+/* buttons */
+document.querySelector(".left-Features").addEventListener("click", () => {
+  paused = true;
+  position += slideWidth * direction * -1;
+  track.style.transition = "transform 0.4s ease";
+  track.style.transform = `translateX(${position}px)`;
+
+  setTimeout(() => {
+    track.style.transition = "none";
+    paused = false;
+  }, 400);
+});
 
 document.querySelector(".right-Features").addEventListener("click", () => {
-  panusd = true;
-  slider.scrollBy({
-    left: slides,
-    behavior: "smooth",
-  });
+  paused = true;
+  position += slideWidth * direction;
+  track.style.transition = "transform 0.4s ease";
+  track.style.transform = `translateX(${position}px)`;
+
   setTimeout(() => {
-    panusd = false;
-  }, 1500);
+    track.style.transition = "none";
+    paused = false;
+  }, 400);
 });
 
-document.querySelector(".left-Features").addEventListener("click", () => {
-  panusd = true;
-  slider.scrollBy({
-    left: -slides,
-    behavior: "smooth",
-  });
-  setTimeout(() => {
-    panusd = false;
-  }, 1500);
-});
 // Image
 
-let sliderimg = document.querySelector(".Testimonials-contener");
-let trackimg = document.querySelector(".Testimonials-gruob-img");
-trackimg.innerHTML += trackimg.innerHTML;
+const testiContainer = document.querySelector(".Testimonials-contener");
+const testiTrack = document.querySelector(".Testimonials-gruob-img");
 
-document.querySelectorAll(".Testimonials-box-flex").forEach((slide) => {
-  slide.classList.add("show");
+// duplicate content
+testiTrack.innerHTML += testiTrack.innerHTML;
+
+// show animation
+document.querySelectorAll(".Testimonials-box-flex").forEach((item) => {
+  item.classList.add("show");
 });
 
-let speedimg = 1;
-let isManual = false;
-sliderimg.scrollLeft = 0;
+/* state */
+let testiSpeed = 0.6;
+let testiPaused = false;
+let testiPosition = 0;
 
-let slid = document.querySelector(".Testimonials-box-flex");
-let slidewidth = slid.offsetWidth + 20;
+/* slide size */
+const testiSlide = document.querySelector(".Testimonials-box-flex");
+const testiSlideWidth = testiSlide.offsetWidth + 20;
 
-function animateSliderimg() {
-  if (!isManual) sliderimg.scrollLeft += speedimg;
+/* direction (can change anytime) */
+let testiDir = getComputedStyle(document.body).direction === "rtl" ? -1 : 1;
 
-  if (sliderimg.scrollLeft >= trackimg.scrollWidth / 2) {
-    sliderimg.scrollLeft = 0;
+/* limit */
+const testiLimit = testiTrack.scrollWidth / 2;
+
+/* animation loop */
+function testiAnimate() {
+  if (!testiPaused) {
+    testiPosition += testiSpeed * testiDir;
+
+    // 🔁 infinite wrap (never disappears)
+    testiPosition = ((testiPosition % testiLimit) + testiLimit) % testiLimit;
+
+    testiTrack.style.transform = `translateX(${testiPosition}px)`;
   }
 
-  requestAnimationFrame(animateSliderimg);
+  requestAnimationFrame(testiAnimate);
 }
 
-animateSliderimg();
+testiAnimate();
 
-sliderimg.addEventListener("mouseenter", () => (speedimg = 0));
-sliderimg.addEventListener("mouseleave", () => (speedimg = 0.5));
+/* hover pause */
+testiContainer.addEventListener("mouseenter", () => (testiPaused = true));
+testiContainer.addEventListener("mouseleave", () => (testiPaused = false));
 
+/* buttons */
 document.querySelector(".right-Testimonials").addEventListener("click", () => {
-  isManual = true;
-  sliderimg.scrollBy({
-    left: slidewidth,
-    behavior: "smooth",
-  });
+  testiPaused = true;
+
+  testiPosition += testiSlideWidth * testiDir;
+  testiTrack.style.transition = "transform 0.4s ease";
+  testiTrack.style.transform = `translateX(${testiPosition}px)`;
+
   setTimeout(() => {
-    isManual = false;
-  }, 1500);
+    testiTrack.style.transition = "none";
+    testiPaused = false;
+  }, 1400);
 });
 
 document.querySelector(".left-Testimonials").addEventListener("click", () => {
-  isManual = true;
-  sliderimg.scrollBy({
-    left: -slidewidth,
-    behavior: "smooth",
-  });
+  testiPaused = true;
+
+  testiPosition -= testiSlideWidth * testiDir;
+  testiTrack.style.transition = "transform 0.4s ease";
+  testiTrack.style.transform = `translateX(${testiPosition}px)`;
+
   setTimeout(() => {
-    isManual = false;
-  }, 1500);
+    testiTrack.style.transition = "none";
+    testiPaused = false;
+  }, 1400);
 });
 
 document.querySelectorAll(".faq-question-img").forEach((item) => {

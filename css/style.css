@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 :root {
-  --primry-color: #3b83f6;
+  --primry-color: #2d4059;
   --sconde-color: #f3f4f6;
-  --main-color: #4e46e5;
+  --main-color: #ea5455;
   --primry-padding-top: 150px;
   --primry-animation: 0.8s;
   --primry-transition: 0.8s;
@@ -14,7 +14,7 @@
 
 body {
   margin: 0;
-  font-family: Inter;
+  font-family: "Cairo", sans-serif;
 }
 
 html {
@@ -24,6 +24,8 @@ html {
 html,
 body {
   scroll-behavior: smooth;
+  direction: rtl;
+  text-align: right;
 }
 ul {
   list-style: none;
@@ -68,7 +70,7 @@ a {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: var(--primry-animation) ease;
+  transition: var(--primry-transition) ease;
 }
 
 .fade-in-scaleX {
@@ -78,19 +80,19 @@ a {
 .fade-in-right {
   opacity: 0;
   transform: translatex(100px);
-  transition: var(--primry-animation) ease;
+  transition: var(--primry-transition) ease;
 }
 
 .fade-in-left {
   opacity: 0;
   transform: translatex(-100px);
-  transition: var(--primry-animation) ease;
+  transition: var(--primry-transition) ease;
 }
 
 .fade-in-top {
   opacity: 0;
   transform: translatey(-100px);
-  transition: var(--primry-animation) ease;
+  transition: var(--primry-transition) ease;
 }
 
 .show {
@@ -102,9 +104,9 @@ a {
 .collr-one {
   background-image: linear-gradient(
     45deg,
-    var(--primry-color),
+    var(--main-color),
     #030304,
-    var(--main-color)
+    var(--primry-color)
   );
 }
 
@@ -120,7 +122,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 999999;
-  transition: all 0.8s ease;
+  transition: all var(--primry-transition) ease;
 }
 
 .header-i {
@@ -129,6 +131,8 @@ a {
   justify-content: center;
   align-items: center;
   transform: translatex(10px);
+  margin-right: 20px;
+  gap: 10px;
 }
 
 .header-i i {
@@ -200,8 +204,8 @@ li a:hover:after {
   border-radius: 10px;
   padding: 10px;
   background: #000000;
-  right: 20px;
-  transition: all 0.8s ease;
+  left: 209px;
+  transition: all var(--primry-transition) ease;
 }
 
 .Other-Services li a {
@@ -221,7 +225,7 @@ li a:hover:after {
   box-shadow: 0 0 4px 0 var(--sconde-color);
   border-radius: 10px;
   padding: 0 25px;
-  transform: translateX(-11px);
+  transform: translateX(15px);
 }
 .header-purches p {
   font-size: 15px;
@@ -237,6 +241,7 @@ li a:hover:after {
   color: aliceblue;
   position: relative;
   animation: infin 2s linear infinite;
+  transform: translateX(-15px);
 }
 
 @keyframes infin {
@@ -269,16 +274,17 @@ li a:hover:after {
 .prent-contener {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
-
+  overflow: hidden;
   margin-top: 20px;
 }
 .contener-list {
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 30px;
   margin-bottom: 100px;
+  transform: translateX(-20px);
 }
 
 .contener-list h2 {
@@ -296,6 +302,11 @@ li a:hover:after {
   color: var(--sconde-color);
   font-size: 20px;
   line-height: 1.5;
+}
+
+.contener-compewter {
+  width: 900px;
+  transform: scaleX(-1);
 }
 
 .buttum {
@@ -392,7 +403,7 @@ li a:hover:after {
   display: grid;
   place-content: center;
   margin-top: 30px;
-  transition: all 0.8s ease;
+  transition: all var(--primry-transition) ease;
 }
 
 .sidel:hover {
@@ -419,7 +430,7 @@ li a:hover:after {
   display: grid;
   place-content: center;
   margin-top: 30px;
-  transition: all 0.8s ease;
+  transition: all var(--primry-transition) ease;
 }
 
 .sider:hover {
@@ -436,8 +447,8 @@ li a:hover:after {
 }
 
 .Features-contener {
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
@@ -447,11 +458,14 @@ li a:hover:after {
 
 .Features-gruob-right {
   display: flex;
+  width: max-content;
+  will-change: transform;
   gap: 20px;
 }
 
 .Features-box-flex {
   flex: 0 0 300px;
+  margin-inline-end: 20;
   text-align: start;
   box-shadow: 0 0 5px 0 var(--primry-color);
   padding: 10px;
@@ -459,7 +473,7 @@ li a:hover:after {
   border-radius: 10px;
   margin: 15px 0;
   position: relative;
-  transition: all 0.8s ease;
+  transition: all var(--primry-transition) ease;
 }
 
 .Features-box-flex:hover {
@@ -468,7 +482,7 @@ li a:hover:after {
 }
 
 .Features .Features-contener .Features-box-flex i {
-  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 10px;
   font-size: 40px;
   color: var(--primry-color);
@@ -511,19 +525,24 @@ li a:hover:after {
 }
 
 .Works-contener {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
-  justify-content: space-around;
   color: var(--sconde-color);
   text-align: center;
+  margin: 30px 120px;
 }
 
 .steap {
   box-shadow: 0 0 10px 0 var(--primry-color);
   border-radius: 10px;
   padding: 20px;
-  transition: all 0.8s ease-out;
+  transition: all var(--primry-transition) ease-out;
+}
+
+.steap:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 0 30px 0 var(--main-color);
 }
 
 .steap span {
@@ -560,8 +579,13 @@ li a:hover:after {
 
 .screenshots-contener img {
   width: 300px;
+  height: auto;
   border-radius: 35px;
-  transition: all ease-in-out 0.8s;
+  transition: all ease-in-out var(--primry-transition);
+}
+
+.screenshots-contener .img-aspect {
+  aspect-ratio: 300 / 595;
 }
 
 .Testimonials {
@@ -572,19 +596,24 @@ li a:hover:after {
 }
 
 .Testimonials .Testimonials-contener {
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
   width: 100%;
   margin-top: 60px;
 }
 
 .Testimonials-gruob-img {
   display: flex;
+  width: max-content;
+  will-change: transform;
   gap: 20px;
   margin: 10px 0;
+  transform: translate3d(0, 0, 0);
 }
 
 .Testimonials-box-flex {
   flex: 0 0 500px;
+  margin-inline-end: 20;
   box-shadow: 0 0 5px 0 var(--primry-color);
   padding: 20px;
   display: flex;
@@ -606,14 +635,14 @@ li a:hover:after {
 .Testimonials-box-flex-p {
   letter-spacing: 1.7px;
   word-spacing: 1.5px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: normal;
 }
 .Testimonials-box-flex span {
   text-transform: uppercase;
   position: absolute;
   bottom: 10px;
-  left: 108px;
+  right: 108px;
   letter-spacing: 1.7px;
   font-size: 13px;
   font-weight: lighter;
@@ -669,7 +698,7 @@ li a:hover:after {
   list-style: none;
   padding: 0;
   margin: 20px 0;
-  text-align: left;
+  text-align: justify;
 }
 
 .Pricing-card ul li {
@@ -762,7 +791,7 @@ li a:hover:after {
   left: 0;
   top: 0;
   z-index: -1;
-  transition: 0.9s;
+  transition: var(--primry-transition);
 }
 
 .faq-question-img:hover::after {
@@ -855,7 +884,7 @@ li a:hover:after {
   background-color: var(--primry-color);
   padding-bottom: var(--primry-padding-top);
   padding-top: var(--primry-padding-top);
-  transition: all 0.8s;
+  transition: all var(--primry-transition);
 }
 
 .cta {
@@ -902,7 +931,7 @@ li a:hover:after {
 
 .cta .btn.primary {
   background: #fff;
-  color: var(--main-color);
+  color: black;
 }
 
 .cta .btn.primary:hover {
