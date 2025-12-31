@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Cairo";
+  src: url("/Cairo/Cairo-VariableFont_slnt\,wght.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -115,14 +123,19 @@ a {
   padding-bottom: 10px;
 }
 
+.prent-contener {
+  position: relative;
+  z-index: 0;
+}
+
 .prent-header {
   display: flex;
   align-items: center;
   padding-top: 17px;
   position: sticky;
   top: 0;
-  z-index: 999999;
-  transition: all var(--primry-transition) ease;
+  z-index: 9999999;
+  transition: all var(--primry-transition) ease-in-out;
 }
 
 .header-i {
@@ -307,6 +320,8 @@ li a:hover:after {
 .contener-compewter {
   width: 900px;
   transform: scaleX(-1);
+  position: relative;
+  z-index: -1;
 }
 
 .buttum {
@@ -840,7 +855,7 @@ li a:hover:after {
 .faq-icon {
   margin: auto 0;
   position: absolute;
-  right: 18px;
+  left: 18px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 22px;
